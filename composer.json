@@ -1,0 +1,34 @@
+{
+  "name": "rdurica/core",
+  "description": "Most used functions and common services",
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": ">= 8.2",
+    "nette/application": "^3.1",
+    "nette/bootstrap": "^3.2",
+    "nette/caching": "^3.2",
+    "nette/database": "^3.1",
+    "nette/di": "^3.1",
+    "nette/forms": "^3.1",
+    "nette/http": "^3.2",
+    "nette/mail": "^4.0",
+    "nette/robot-loader": "^4.0",
+    "nette/security": "^3.1",
+    "nette/utils": "^4.0",
+    "latte/latte": "^3.0"
+  },
+  "require-dev": {
+    "nette/tester": "^2.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Rdurica\\Core\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Robert Durica"
+    }
+  ]
+}
