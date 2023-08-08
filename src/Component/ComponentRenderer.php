@@ -6,6 +6,7 @@ namespace Rdurica\Core\Component;
 
 use ReflectionClass;
 
+use function dirname;
 use function get_class;
 
 /**
@@ -26,7 +27,7 @@ trait ComponentRenderer
     public function render(): void
     {
         $reflector = new ReflectionClass(get_class($this));
-        $this->getTemplate()->setFile(\dirname($reflector->getFileName()) . '/default.latte');
+        $this->getTemplate()->setFile(dirname($reflector->getFileName()) . '/default.latte');
         $this->getTemplate()->render();
     }
 }
