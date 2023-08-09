@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Rdurica\Core\Presenter;
 
 /**
- * SetMaterializeTemplateLayout.
+ * SetMdbTemplateLayout.
  * @method setLayout(string $string)
  *
  * @property array $onStartup
@@ -13,17 +13,17 @@ namespace Rdurica\Core\Presenter;
  * @author    Robert Durica <r.durica@gmail.com>
  * @copyright Copyright (c) 2023, Robert Durica
  */
-trait SetMaterializeTemplateLayout
+trait SetMdbTemplateLayout
 {
     /**
-     * Sets default layout for presenter to materialize {@link https://materializecss.com}
+     * Sets default layout for presenter to MDB Bootstrap {@link https://mdbootstrap.com}.
      *
      * @return void
      */
     public function injectSetMaterializeTemplateLayout(): void
     {
         $this->onStartup[] = function () {
-            $this->setLayout(__DIR__ . "/../Templates/@layoutMaterialize.latte");
+            $this->setLayout(__DIR__ . "/../Templates/@layoutMDB.latte");
         };
     }
 }

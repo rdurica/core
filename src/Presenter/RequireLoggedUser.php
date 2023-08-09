@@ -8,7 +8,7 @@ namespace Rdurica\Core\Presenter;
  * RequireLoggedUser.
  * @method getUser()
  * @method storeRequest()
- * @method redirect(string $string, $storeRequest)
+ * @method redirect(string $string)
  *
  * @property array $onStartup
  * @package   Rdurica\Core\Presenter
@@ -26,7 +26,7 @@ trait RequireLoggedUser
     {
         $this->onStartup[] = function () {
             if (!$this->getUser()->isLoggedIn()) {
-                $this->redirect('Sign:in', $this->storeRequest());
+                $this->redirect('Sign:in');
             }
         };
     }
