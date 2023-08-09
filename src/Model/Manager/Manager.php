@@ -7,6 +7,7 @@ namespace Rdurica\Core\Model;
 use Nette\Database\Explorer;
 use Nette\Database\Table\ActiveRow;
 use Nette\Database\Table\Selection;
+use Traversable;
 
 /**
  * Manager.
@@ -32,6 +33,17 @@ abstract class Manager
      * @return string
      */
     abstract protected function getTableName(): string;
+
+    /**
+     * Insert data into database.
+     *
+     * @param array|Traversable|Selection $data [$column => $value]|\Traversable|Selection for INSERT ... SELECT
+     * @return ActiveRow|int|bool Returns ActiveRow or number of affected rows for Selection or table without primary key
+     */
+    final public function insert(iterable $data): ActiveRow|bool|int
+    {
+        return $this->find()->insert($data);
+    }
 
     /**
      * Get table for manager.
