@@ -7,6 +7,7 @@ namespace Rdurica\Core\Model\Manager;
 use Nette\Database\Explorer;
 use Nette\Database\Table\ActiveRow;
 use Nette\Database\Table\Selection;
+use Nette\Database\UniqueConstraintViolationException;
 use Traversable;
 
 /**
@@ -39,6 +40,7 @@ abstract class Manager
      *
      * @param array|Traversable|Selection $data [$column => $value]|\Traversable|Selection for INSERT ... SELECT
      * @return ActiveRow|int|bool Returns ActiveRow or number of affected rows for Selection or table without primary key
+     * @throws UniqueConstraintViolationException
      */
     final public function insert(iterable $data): ActiveRow|bool|int
     {

@@ -1,4 +1,4 @@
 services:
     security.passwords: Nette\Security\Passwords(::PASSWORD_BCRYPT, [cost: 12])
-    core.userManager: Rdurica\Core\Model\UserManager
-    core.userService: Rdurica\Core\Service\UserService
+    core.userManager: Rdurica\Core\Model\Manager\UserManager
+    core.userService: Rdurica\Core\Model\Service\UserService

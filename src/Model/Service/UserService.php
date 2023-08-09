@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Rdurica\Core\Service;
+namespace Rdurica\Core\Model\Service;
 
 use Nette\Database\UniqueConstraintViolationException;
 use Nette\Security\AuthenticationException;
 use Nette\Security\Authenticator;
 use Nette\Security\Passwords;
 use Nette\Security\SimpleIdentity;
-use Rdurica\Core\Model\UserManager;
+use Rdurica\Core\Model\Manager\UserManager;
 use SensitiveParameter;
 
 /**
@@ -50,7 +50,7 @@ final readonly class UserService implements Authenticator
             throw new AuthenticationException("Incorrect password.");
         }
 
-        if ($user->is_active === 0) {
+        if ($user->is_enabled === 0) {
             throw new AuthenticationException("Account is blocked.");
         }
 
