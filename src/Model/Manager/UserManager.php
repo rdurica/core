@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rdurica\Core\Model;
+namespace Rdurica\Core\Model\Manager;
 
 use Nette\Database\Table\ActiveRow;
 
