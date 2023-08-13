@@ -9,7 +9,7 @@ use Nette\Database\Table\ActiveRow;
 class UserManager extends Manager
 {
     /** @var string Table name. */
-    private const TABLE = 'core_users';
+    private const TABLE = 'core_acl_user';
 
     /** @inheritDoc */
     protected function getTableName(): string

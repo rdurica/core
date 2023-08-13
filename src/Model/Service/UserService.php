@@ -5,11 +5,15 @@ declare(strict_types=1);
 namespace Rdurica\Core\Model\Service;
 
 use Nette\Database\UniqueConstraintViolationException;
+use Nette\Http\Session;
+use Nette\Http\SessionSection;
 use Nette\Security\AuthenticationException;
 use Nette\Security\Authenticator;
 use Nette\Security\Passwords;
-use Nette\Security\SimpleIdentity;
+use Rdurica\Core\Model\Entity\CoreIdentity;
+use Rdurica\Core\Model\Manager\AclManager;
 use Rdurica\Core\Model\Manager\UserManager;
+use Rdurica\Core\Model\Manager\UserRoleManager;
 use SensitiveParameter;
 
 /**
@@ -19,16 +23,36 @@ use SensitiveParameter;
  * @author    Robert Durica <r.durica@gmail.com>
  * @copyright Copyright (c) 2023, Robert Durica
  */
-final readonly class UserService implements Authenticator
+final class UserService implements Authenticator
 {
+    /** @var string Session section. */
+    private const SESSION_SECTION_ACL = 'core_acl';
+
+    /** @var string Session section key. */
+    private const SECTION_ROLES = 'roles';
+
+    private const SECTION_RESOURCES = 'resources';
+
+    /** @var SessionSection Section of session. */
+    private SessionSection $sessionSection;
+
     /**
      * Constructor.
      *
-     * @param UserManager $userManager
-     * @param Passwords   $passwords
+     * @param AclManager      $aclManager
+     * @param UserManager     $userManager
+     * @param UserRoleManager $roleManager
+     * @param Passwords       $passwords
+     * @param Session         $session
      */
-    public function __construct(private UserManager $userManager, private Passwords $passwords)
-    {
+    public function __construct(
+        private readonly AclManager $aclManager,
+        private readonly UserManager $userManager,
+        private readonly UserRoleManager $roleManager,
+        private readonly Passwords $passwords,
+        private readonly Session $session
+    ) {
+        $this->sessionSection = $this->session->getSection(self::SESSION_SECTION_ACL);
     }
 
     /**
@@ -36,10 +60,10 @@ final readonly class UserService implements Authenticator
      *
      * @param string $user
      * @param string $password
-     * @return SimpleIdentity
+     * @return CoreIdentity
      * @throws AuthenticationException
      */
-    public function authenticate(string $user, string $password): SimpleIdentity
+    public function authenticate(string $user, string $password): CoreIdentity
     {
         $user = $this->userManager->findByUsername($user);
         if (!$user) {
@@ -54,10 +78,22 @@ final readonly class UserService implements Authenticator
             throw new AuthenticationException("Account is blocked.");
         }
 
-        return new SimpleIdentity($user->id, roles: [], data: [
-            "username" => $user->username,
-            "email" => $user->email,
-        ]);
+        $roles = $this->roleManager->findByUserId($user->id);
+        $resources = $this->aclManager->findResourcesAndPrivilegesByRoles(array_values($roles));
+
+        $this->sessionSection[self::SECTION_RESOURCES] = $resources;
+
+        return new CoreIdentity(
+            $user->id,
+            $user->username,
+            $user->email,
+            $roles,
+        );
+    }
+
+    public function getLoggedUserResourcesAndPrivileges(): array
+    {
+        return $this->sessionSection[self::SECTION_RESOURCES];
     }
 
     /**

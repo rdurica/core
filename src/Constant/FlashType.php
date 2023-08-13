@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rdurica\Core\Util;
+namespace Rdurica\Core\Constant;
 
 /**
  * Types of flash messages.
