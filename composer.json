@@ -19,11 +19,19 @@
     "latte/latte": "^3.0"
   },
   "require-dev": {
-    "nette/tester": "^2.4"
+    "nette/tester": "^2.4",
+    "phpunit/phpunit": "^10.3",
+    "mockery/mockery": "^1.6",
+    "dg/bypass-finals": "^1.4"
+  },
+  "scripts": {
+    "phpunit": "vendor/bin/phpunit --bootstrap='tests/Bootstrap.php' tests/PhpUnit",
+    "phpunit-coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit --bootstrap='tests/Bootstrap.php' --coverage-html='tests/Coverage' tests/PhpUnit"
   },
   "autoload": {
     "psr-4": {
-      "Rdurica\\Core\\": "src/"
+      "Rdurica\\Core\\": "src/",
+      "PhpUnit\\": "tests/PhpUnit"
     }
   },
   "authors": [

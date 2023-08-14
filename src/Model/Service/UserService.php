@@ -28,9 +28,6 @@ final class UserService implements Authenticator
     /** @var string Session section. */
     private const SESSION_SECTION_ACL = 'core_acl';
 
-    /** @var string Session section key. */
-    private const SECTION_ROLES = 'roles';
-
     private const SECTION_RESOURCES = 'resources';
 
     /** @var SessionSection Section of session. */
@@ -91,7 +88,12 @@ final class UserService implements Authenticator
         );
     }
 
-    public function getLoggedUserResourcesAndPrivileges(): array
+    /**
+     * Get resources & privileges for logged user from cache.
+     *
+     * @return array|null
+     */
+    public function getLoggedUserResourcesAndPrivileges(): ?array
     {
         return $this->sessionSection[self::SECTION_RESOURCES];
     }

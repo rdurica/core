@@ -15,7 +15,7 @@ use Rdurica\Core\Constant\Role;
  * @author    Robert Durica <r.durica@gmail.com>
  * @copyright Copyright (c) 2023, Robert Durica
  */
-final readonly class Authorization implements Authorizator
+final class Authorization implements Authorizator
 {
     /**
      * Constructor.
