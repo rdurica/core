@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Rdurica\Core\Presenter;
 
-use JetBrains\PhpStorm\NoReturn;
 use Nette\Application\AbortException;
 use Nette\Application\UI\Presenter as NettePresenter;
 
@@ -23,7 +22,7 @@ abstract class Presenter extends NettePresenter
      * @return void
      * @throws AbortException
      */
-    #[NoReturn] public function handleSignOut(): void
+    public function handleSignOut(): void
     {
         if (!$this->getUser()->isLoggedIn()) {
             return;
