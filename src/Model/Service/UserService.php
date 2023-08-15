@@ -28,6 +28,7 @@ final class UserService implements Authenticator
     /** @var string Session section. */
     private const SESSION_SECTION_ACL = 'core_acl';
 
+    /** @var string Session subsection. */
     private const SECTION_RESOURCES = 'resources';
 
     /** @var SessionSection Section of session. */
