@@ -19,7 +19,7 @@ Register extension
 
 ```neon
 extensions:
-	console: Contributte\Console\DI\ConsoleExtension(%consoleMode%)
+	rdurica.core: Rdurica\Core\Extension\CoreExtension
 ```
 ## Key Features
 #### Base Model and Utility Traits ####
