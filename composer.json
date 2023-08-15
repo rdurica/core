@@ -19,7 +19,6 @@
     "latte/latte": "^3.0"
   },
   "require-dev": {
-    "nette/tester": "^2.4",
     "phpunit/phpunit": "^10.3",
     "mockery/mockery": "^1.6",
     "dg/bypass-finals": "^1.4"
