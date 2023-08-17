@@ -21,6 +21,9 @@
 <body>
 {block navbar}{/block}
 
+
+
+
 <div class="container-fluid mt-5">
         {include content}
 </div>
@@ -48,6 +51,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.27.3/plugins/history/trumbowyg.history.min.js"
             integrity="sha512-v0d9RCXjipJ+kkx668PzRjCyAnP75ACp7Bj244PObN+zLIYUtC+bfc3xT+vQhcOrwrRvHON9Ji1dEDzVCx7h4w=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="//rawcdn.githack.com/RickStrahl/jquery-resizable/0.35/dist/jquery-resizable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.27.3/plugins/resizimg/trumbowyg.resizimg.min.js"
+            integrity="sha512-JZOoRxJ64e6kEmiOlPvfvwVHstNxfQkncJUAKUoWfUd20tyGijKV658KH0d2hgmcw0vBPNsGqu/QBs17La+nnA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
         naja.initialize();
@@ -73,6 +80,12 @@
 
         $('.date-picker').datepicker();
         $('.wysiwyg').trumbowyg({
+            plugins: {
+                resizimg: {
+                    minSize: 64,
+                    step: 16,
+                }
+            },
             btns: [
                 ['historyUndo', 'historyRedo'],
                 ['foreColor', 'backColor'],
