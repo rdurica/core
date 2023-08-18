@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PhpUnit\Authorization;
+namespace PhpUnit\AuthorizationService;
 
 use Mockery;
 use PHPUnit\Framework\TestCase;
@@ -13,10 +13,10 @@ use Rdurica\Core\Model\Service\UserService;
 /**
  * IsAllowedTest.
  *
- * @covers    \Rdurica\Core\Model\Service\Authorization
- * @package   PhpUnit\Authorization
+ * @package   PhpUnit\AuthorizationService
  * @author    Robert Durica <r.durica@gmail.com>
  * @copyright Copyright (c) 2023, Robert Durica
+ * @covers    \Rdurica\Core\Model\Service\AuthorizationService
  */
 final class IsAllowedTest extends TestCase
 {
@@ -28,7 +28,7 @@ final class IsAllowedTest extends TestCase
      */
     public function testGlobalAdmin()
     {
-        $service = AuthorizationBuilder::create()
+        $service = AuthorizationServiceBuilder::create()
             ->build();
 
         $result = $service->isAllowed(Role::GLOBAL_ADMIN, 'xxx', 'yyy');
@@ -50,7 +50,7 @@ final class IsAllowedTest extends TestCase
             ->once()
             ->andReturn([]);
 
-        $service = AuthorizationBuilder::create()
+        $service = AuthorizationServiceBuilder::create()
             ->setUserServiceMock($userServiceMock)
             ->build();
 
@@ -73,7 +73,7 @@ final class IsAllowedTest extends TestCase
             ->once()
             ->andReturn(null);
 
-        $service = AuthorizationBuilder::create()
+        $service = AuthorizationServiceBuilder::create()
             ->setUserServiceMock($userServiceMock)
             ->build();
 
@@ -96,7 +96,7 @@ final class IsAllowedTest extends TestCase
             ->once()
             ->andReturn(['xxx' => ['zzz' => 111]]);
 
-        $service = AuthorizationBuilder::create()
+        $service = AuthorizationServiceBuilder::create()
             ->setUserServiceMock($userServiceMock)
             ->build();
 
@@ -119,7 +119,7 @@ final class IsAllowedTest extends TestCase
             ->once()
             ->andReturn(['xxx' => ['yyy' => 111]]);
 
-        $service = AuthorizationBuilder::create()
+        $service = AuthorizationServiceBuilder::create()
             ->setUserServiceMock($userServiceMock)
             ->build();
 
@@ -142,7 +142,7 @@ final class IsAllowedTest extends TestCase
             ->once()
             ->andReturn(['xxx' => [Privileges::ALL => 111]]);
 
-        $service = AuthorizationBuilder::create()
+        $service = AuthorizationServiceBuilder::create()
             ->setUserServiceMock($userServiceMock)
             ->build();
 
@@ -165,7 +165,7 @@ final class IsAllowedTest extends TestCase
             ->once()
             ->andReturn(['zzz' => [Privileges::ALL => 111]]);
 
-        $service = AuthorizationBuilder::create()
+        $service = AuthorizationServiceBuilder::create()
             ->setUserServiceMock($userServiceMock)
             ->build();
 

@@ -16,27 +16,16 @@ final class AclManager extends Manager
     }
 
     /**
-     * Finds Resources & Privileges for roles.
+     * Find Resources & privileges for role
      *
-     * @param int[] $roles
-     * @return array<string, array<string, int>> Returns [resource => [privilage => id]]
+     * @param array $roles
+     * @return array<int, string|int>
      */
-    public function findResourcesAndPrivilegesByRoles(array $roles): array
+    public function findByRoles(array $roles): array
     {
-        $result = [];
-        $aclData = $this->find()
+        return $this->find()
             ->select('resource.resource, privilege.privilege, privilege_id')
             ->where('role_id', $roles)
             ->fetchAll();
-
-        foreach ($aclData as $row) {
-            if (!array_key_exists($row->resource, $result)) {
-                $result[$row['resource']] = [];
-            }
-
-            $result[$row['resource']] += [$row['privilege'] => $row['privilege_id']];
-        }
-
-        return $result;
     }
 }

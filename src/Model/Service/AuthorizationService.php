@@ -9,13 +9,13 @@ use Rdurica\Core\Constant\Privileges;
 use Rdurica\Core\Constant\Role;
 
 /**
- * Authorization (ACL)
+ * AuthorizationService (ACL)
  *
  * @package   Rdurica\Core\Model\Service
  * @author    Robert Durica <r.durica@gmail.com>
  * @copyright Copyright (c) 2023, Robert Durica
  */
-final class Authorization implements Authorizator
+final class AuthorizationService implements Authorizator
 {
     /**
      * Constructor.

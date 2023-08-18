@@ -2,31 +2,31 @@
 
 declare(strict_types=1);
 
-namespace PhpUnit\Authorization;
+namespace PhpUnit\AuthorizationService;
 
 use Mockery;
 use Mockery\MockInterface;
-use Rdurica\Core\Model\Service\Authorization;
+use Rdurica\Core\Model\Service\AuthorizationService;
 use Rdurica\Core\Model\Service\UserService;
 
 /**
  * Service builder.
  *
- * @package   PhpUnit\Authorization
+ * @package   PhpUnit\AuthorizationService
  * @author    Robert Durica <r.durica@gmail.com>
  * @copyright Copyright (c) 2023, Robert Durica
  */
-final class AuthorizationBuilder
+final class AuthorizationServiceBuilder
 {
     /** @var UserService|null Mock. */
-    protected ?UserService $userServiceMock = null;
+    private ?UserService $userServiceMock = null;
 
     /**
      * Create builder.
      *
-     * @return AuthorizationBuilder
+     * @return AuthorizationServiceBuilder
      */
-    public static function create(): AuthorizationBuilder
+    public static function create(): AuthorizationServiceBuilder
     {
         return new self();
     }
@@ -37,7 +37,7 @@ final class AuthorizationBuilder
      * @param UserService|null $userServiceMock
      * @return $this
      */
-    public function setUserServiceMock(?UserService $userServiceMock): AuthorizationBuilder
+    public function setUserServiceMock(?UserService $userServiceMock): AuthorizationServiceBuilder
     {
         $this->userServiceMock = $userServiceMock;
         return $this;
@@ -46,13 +46,13 @@ final class AuthorizationBuilder
     /**
      * Build service mock.
      *
-     * @return MockInterface|Authorization
+     * @return MockInterface|AuthorizationService
      */
-    public function build(): MockInterface|Authorization
+    public function build(): MockInterface|AuthorizationService
     {
         $this->userServiceMock ??= Mockery::mock(UserService::class);
 
-        return Mockery::mock(Authorization::class, [
+        return Mockery::mock(AuthorizationService::class, [
             $this->userServiceMock
         ])->makePartial();
     }

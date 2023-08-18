@@ -6,5 +6,6 @@ services:
     core.userRoleManager: Rdurica\Core\Model\Manager\UserRoleManager
 
     # Services
+    core.aclService: Rdurica\Core\Model\Service\AclService
     core.userService: Rdurica\Core\Model\Service\UserService
-    core.authorizator: Rdurica\Core\Model\Service\Authorization
+    core.authorizator: Rdurica\Core\Model\Service\AuthorizationService

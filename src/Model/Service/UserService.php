@@ -37,14 +37,14 @@ final class UserService implements Authenticator
     /**
      * Constructor.
      *
-     * @param AclManager      $aclManager
+     * @param AclService      $aclService
      * @param UserManager     $userManager
      * @param UserRoleManager $roleManager
      * @param Passwords       $passwords
      * @param Session         $session
      */
     public function __construct(
-        private readonly AclManager $aclManager,
+        private readonly AclService $aclService,
         private readonly UserManager $userManager,
         private readonly UserRoleManager $roleManager,
         private readonly Passwords $passwords,
@@ -77,7 +77,7 @@ final class UserService implements Authenticator
         }
 
         $roles = $this->roleManager->findByUserId($user->id);
-        $resources = $this->aclManager->findResourcesAndPrivilegesByRoles(array_values($roles));
+        $resources = $this->aclService->findResourcesAndPrivilegesByRoles(array_values($roles));
 
         $this->sessionSection[self::SECTION_RESOURCES] = $resources;
 
