@@ -8,7 +8,7 @@ use Mockery;
 use PHPUnit\Framework\TestCase;
 use Rdurica\Core\Constant\Privileges;
 use Rdurica\Core\Constant\Role;
-use Rdurica\Core\Model\Service\UserService;
+use Rdurica\Core\Model\Service\AuthenticationService;
 
 /**
  * IsAllowedTest.
@@ -44,14 +44,14 @@ final class IsAllowedTest extends TestCase
     public function testNoResources()
     {
         // Services
-        $userServiceMock = Mockery::mock(UserService::class);
+        $userServiceMock = Mockery::mock(AuthenticationService::class);
         $userServiceMock
-            ->shouldReceive('getLoggedUserResourcesAndPrivileges')
+            ->shouldReceive('getUserResourcesAndPrivilegesFromSession')
             ->once()
             ->andReturn([]);
 
         $service = AuthorizationServiceBuilder::create()
-            ->setUserServiceMock($userServiceMock)
+            ->setAuthenticationService($userServiceMock)
             ->build();
 
         $result = $service->isAllowed('xyz', 'xxx', 'yyy');
@@ -67,14 +67,14 @@ final class IsAllowedTest extends TestCase
     public function testNullResources()
     {
         // Services
-        $userServiceMock = Mockery::mock(UserService::class);
+        $userServiceMock = Mockery::mock(AuthenticationService::class);
         $userServiceMock
-            ->shouldReceive('getLoggedUserResourcesAndPrivileges')
+            ->shouldReceive('getUserResourcesAndPrivilegesFromSession')
             ->once()
             ->andReturn(null);
 
         $service = AuthorizationServiceBuilder::create()
-            ->setUserServiceMock($userServiceMock)
+            ->setAuthenticationService($userServiceMock)
             ->build();
 
         $result = $service->isAllowed('xyz', 'xxx', 'yyy');
@@ -90,14 +90,14 @@ final class IsAllowedTest extends TestCase
     public function testHasResourceAndNoPrivilege()
     {
         // Services
-        $userServiceMock = Mockery::mock(UserService::class);
+        $userServiceMock = Mockery::mock(AuthenticationService::class);
         $userServiceMock
-            ->shouldReceive('getLoggedUserResourcesAndPrivileges')
+            ->shouldReceive('getUserResourcesAndPrivilegesFromSession')
             ->once()
             ->andReturn(['xxx' => ['zzz' => 111]]);
 
         $service = AuthorizationServiceBuilder::create()
-            ->setUserServiceMock($userServiceMock)
+            ->setAuthenticationService($userServiceMock)
             ->build();
 
         $result = $service->isAllowed('xyz', 'xxx', 'yyy');
@@ -113,14 +113,14 @@ final class IsAllowedTest extends TestCase
     public function testHasResourceAndPrivilege()
     {
         // Services
-        $userServiceMock = Mockery::mock(UserService::class);
+        $userServiceMock = Mockery::mock(AuthenticationService::class);
         $userServiceMock
-            ->shouldReceive('getLoggedUserResourcesAndPrivileges')
+            ->shouldReceive('getUserResourcesAndPrivilegesFromSession')
             ->once()
             ->andReturn(['xxx' => ['yyy' => 111]]);
 
         $service = AuthorizationServiceBuilder::create()
-            ->setUserServiceMock($userServiceMock)
+            ->setAuthenticationService($userServiceMock)
             ->build();
 
         $result = $service->isAllowed('xyz', 'xxx', 'yyy');
@@ -136,14 +136,14 @@ final class IsAllowedTest extends TestCase
     public function testHasResourceAndPrivilegeAll()
     {
         // Services
-        $userServiceMock = Mockery::mock(UserService::class);
+        $userServiceMock = Mockery::mock(AuthenticationService::class);
         $userServiceMock
-            ->shouldReceive('getLoggedUserResourcesAndPrivileges')
+            ->shouldReceive('getUserResourcesAndPrivilegesFromSession')
             ->once()
             ->andReturn(['xxx' => [Privileges::ALL => 111]]);
 
         $service = AuthorizationServiceBuilder::create()
-            ->setUserServiceMock($userServiceMock)
+            ->setAuthenticationService($userServiceMock)
             ->build();
 
         $result = $service->isAllowed('xyz', 'xxx', 'yyy');
@@ -159,14 +159,14 @@ final class IsAllowedTest extends TestCase
     public function testHasDifferentResourceAndPrivilegeAll()
     {
         // Services
-        $userServiceMock = Mockery::mock(UserService::class);
+        $userServiceMock = Mockery::mock(AuthenticationService::class);
         $userServiceMock
-            ->shouldReceive('getLoggedUserResourcesAndPrivileges')
+            ->shouldReceive('getUserResourcesAndPrivilegesFromSession')
             ->once()
             ->andReturn(['zzz' => [Privileges::ALL => 111]]);
 
         $service = AuthorizationServiceBuilder::create()
-            ->setUserServiceMock($userServiceMock)
+            ->setAuthenticationService($userServiceMock)
             ->build();
 
         $result = $service->isAllowed('xyz', 'xxx', 'yyy');

@@ -7,7 +7,7 @@ namespace PhpUnit\AuthorizationService;
 use Mockery;
 use Mockery\MockInterface;
 use Rdurica\Core\Model\Service\AuthorizationService;
-use Rdurica\Core\Model\Service\UserService;
+use Rdurica\Core\Model\Service\AuthenticationService;
 
 /**
  * Service builder.
@@ -18,8 +18,8 @@ use Rdurica\Core\Model\Service\UserService;
  */
 final class AuthorizationServiceBuilder
 {
-    /** @var UserService|null Mock. */
-    private ?UserService $userServiceMock = null;
+    /** @var AuthenticationService|null Mock. */
+    private ?AuthenticationService $authenticationService = null;
 
     /**
      * Create builder.
@@ -34,12 +34,12 @@ final class AuthorizationServiceBuilder
     /**
      * Setter.
      *
-     * @param UserService|null $userServiceMock
+     * @param AuthenticationService|null $authenticationService
      * @return $this
      */
-    public function setUserServiceMock(?UserService $userServiceMock): AuthorizationServiceBuilder
+    public function setAuthenticationService(?AuthenticationService $authenticationService): AuthorizationServiceBuilder
     {
-        $this->userServiceMock = $userServiceMock;
+        $this->authenticationService = $authenticationService;
         return $this;
     }
 
@@ -50,10 +50,10 @@ final class AuthorizationServiceBuilder
      */
     public function build(): MockInterface|AuthorizationService
     {
-        $this->userServiceMock ??= Mockery::mock(UserService::class);
+        $this->authenticationService ??= Mockery::mock(AuthenticationService::class);
 
         return Mockery::mock(AuthorizationService::class, [
-            $this->userServiceMock
+            $this->authenticationService
         ])->makePartial();
     }
 }

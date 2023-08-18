@@ -20,9 +20,9 @@ final class AuthorizationService implements Authorizator
     /**
      * Constructor.
      *
-     * @param UserService $userService
+     * @param AuthenticationService $authenticationService
      */
-    public function __construct(private UserService $userService)
+    public function __construct(private AuthenticationService $authenticationService)
     {
     }
 
@@ -34,7 +34,7 @@ final class AuthorizationService implements Authorizator
             return true;
         }
 
-        $resources = $this->userService->getLoggedUserResourcesAndPrivileges();
+        $resources = $this->authenticationService->getUserResourcesAndPrivilegesFromSession();
 
         // User does not have resource
         if (empty($resources[$resource])) {
