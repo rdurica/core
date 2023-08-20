@@ -38,3 +38,7 @@ jobs:
 
     - name: Run test suite
       run: composer run-script phpunit
+
+    - name: Coveralls GitHub Action
+      uses: coverallsapp/github-action@v2
+            
