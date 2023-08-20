@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PhpUnit\AclService;
+namespace PhpUnit\Service\AclService;
 
 use Mockery;
 use Nette\Utils\ArrayHash;

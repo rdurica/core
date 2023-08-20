@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace PhpUnit\AuthorizationService;
+namespace PhpUnit\Service\AuthorizationService;
 
 use Mockery;
 use Mockery\MockInterface;
-use Rdurica\Core\Model\Service\AuthorizationService;
 use Rdurica\Core\Model\Service\AuthenticationService;
+use Rdurica\Core\Model\Service\AuthorizationService;
 
 /**
  * Service builder.

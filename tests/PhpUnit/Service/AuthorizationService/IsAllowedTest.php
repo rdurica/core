@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PhpUnit\AuthorizationService;
+namespace PhpUnit\Service\AuthorizationService;
 
 use Mockery;
 use PHPUnit\Framework\TestCase;

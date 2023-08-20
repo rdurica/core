@@ -12,6 +12,7 @@ use Nette\DI\CompilerExtension;
  * @package   Rdurica\Core\Extension
  * @author    Robert Durica <r.durica@gmail.com>
  * @copyright Copyright (c) 2023, Robert Durica
+ * @codeCoverageIgnore
  */
 final class CoreExtension extends CompilerExtension
 {

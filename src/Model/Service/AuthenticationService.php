@@ -88,6 +88,7 @@ final class AuthenticationService implements Authenticator
     /**
      * Get resources & privileges from cache.
      *
+     * @codeCoverageIgnore
      * @return array|null
      */
     public function getUserResourcesAndPrivilegesFromSession(): ?array

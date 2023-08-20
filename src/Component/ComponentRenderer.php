@@ -16,6 +16,7 @@ use function get_class;
  * @author    Robert Durica <r.durica@gmail.com>
  * @copyright Copyright (c) 2023, Robert Durica
  * @method getTemplate()
+ * @codeCoverageIgnore
  */
 trait ComponentRenderer
 {

@@ -12,6 +12,7 @@ namespace Rdurica\Core\Presenter;
  * @package   Rdurica\Core\Presenter
  * @author    Robert Durica <r.durica@gmail.com>
  * @copyright Copyright (c) 2023, Robert Durica
+ * @codeCoverageIgnore
  */
 trait SetMdbTemplateLayout
 {

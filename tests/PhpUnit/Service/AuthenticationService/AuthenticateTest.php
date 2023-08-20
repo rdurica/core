@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PhpUnit\AuthenticationService;
+namespace PhpUnit\Service\AuthenticationService;
 
 use Mockery;
 use Nette\Database\Table\ActiveRow;

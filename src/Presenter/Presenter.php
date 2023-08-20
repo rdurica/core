@@ -13,6 +13,7 @@ use Nette\Application\UI\Presenter as NettePresenter;
  * @package   Rdurica\Core\Presenter
  * @author    Robert Durica <r.durica@gmail.com>
  * @copyright Copyright (c) 2023, Robert Durica
+ * @codeCoverageIgnore
  */
 abstract class Presenter extends NettePresenter
 {
