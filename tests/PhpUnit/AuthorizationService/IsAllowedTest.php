@@ -26,7 +26,7 @@ final class IsAllowedTest extends TestCase
      *
      * @return void
      */
-    public function testGlobalAdmin()
+    public function testGlobalAdmin(): void
     {
         $service = AuthorizationServiceBuilder::create()
             ->build();
@@ -41,7 +41,7 @@ final class IsAllowedTest extends TestCase
      *
      * @return void
      */
-    public function testNoResources()
+    public function testNoResources(): void
     {
         // Services
         $userServiceMock = Mockery::mock(AuthenticationService::class);
@@ -64,7 +64,7 @@ final class IsAllowedTest extends TestCase
      *
      * @return void
      */
-    public function testNullResources()
+    public function testNullResources(): void
     {
         // Services
         $userServiceMock = Mockery::mock(AuthenticationService::class);
@@ -87,7 +87,7 @@ final class IsAllowedTest extends TestCase
      *
      * @return void
      */
-    public function testHasResourceAndNoPrivilege()
+    public function testHasResourceAndNoPrivilege(): void
     {
         // Services
         $userServiceMock = Mockery::mock(AuthenticationService::class);
@@ -110,7 +110,7 @@ final class IsAllowedTest extends TestCase
      *
      * @return void
      */
-    public function testHasResourceAndPrivilege()
+    public function testHasResourceAndPrivilege(): void
     {
         // Services
         $userServiceMock = Mockery::mock(AuthenticationService::class);
@@ -133,7 +133,7 @@ final class IsAllowedTest extends TestCase
      *
      * @return void
      */
-    public function testHasResourceAndPrivilegeAll()
+    public function testHasResourceAndPrivilegeAll(): void
     {
         // Services
         $userServiceMock = Mockery::mock(AuthenticationService::class);
@@ -156,7 +156,7 @@ final class IsAllowedTest extends TestCase
      *
      * @return void
      */
-    public function testHasDifferentResourceAndPrivilegeAll()
+    public function testHasDifferentResourceAndPrivilegeAll(): void
     {
         // Services
         $userServiceMock = Mockery::mock(AuthenticationService::class);
