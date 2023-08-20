@@ -3,7 +3,10 @@
 [![PHP](https://img.shields.io/badge/PHP-8.2-blue.svg)](http://php.net)
 ![GitHub release (with filter)](https://img.shields.io/github/v/release/rdurica/core)
 ![GitHub](https://img.shields.io/github/license/rdurica/core)
-![Packagist Downloads (custom server)](https://img.shields.io/packagist/dm/rdurica/core)
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/rdurica/core/phpunit.yml)
+[![codecov](https://codecov.io/gh/rdurica/core/graph/badge.svg?token=BP1QN0FK2T)](https://codecov.io/gh/rdurica/core)
+![Packagist Downloads (custom server)](https://img.shields.io/packagist/dt/rdurica/core)
+
 
 The Core package is a comprehensive utility toolkit designed to enhance your application development process by
 providing a range of essential functionalities. With its focus on seamless integration, it includes foundational
