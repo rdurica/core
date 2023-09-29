@@ -17,6 +17,12 @@ use Nette\Application\UI\Presenter as NettePresenter;
  */
 abstract class Presenter extends NettePresenter
 {
+    /** @var string Name of presenter. Override this in child classes. */
+    public const PRESENTER_NAME = '';
+
+    /** @var string Default render action. */
+    public const ACTION_DEFAULT = 'default';
+
     /**
      * Log-out user and clear identity.
      *
