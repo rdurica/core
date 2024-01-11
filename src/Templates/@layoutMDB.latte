@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.27.3/ui/trumbowyg.min.css"
           integrity="sha512-Fm8kRNVGCBZn0sPmwJbVXlqfJmPC13zRsMElZenX6v721g/H7OukJd8XzDEBRQ2FSATK8xNF9UYvzsCtUpfeJg=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
     {block css}{/block}
     <title>{ifset title}{include title|stripHtml}{/ifset}</title>
 </head>
@@ -55,6 +56,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.27.3/plugins/resizimg/trumbowyg.resizimg.min.js"
             integrity="sha512-JZOoRxJ64e6kEmiOlPvfvwVHstNxfQkncJUAKUoWfUd20tyGijKV658KH0d2hgmcw0vBPNsGqu/QBs17La+nnA=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
 
     <script>
         naja.initialize();
@@ -98,6 +100,10 @@
                 ['fullscreen']
             ]
         });
+
+        Fancybox.bind('[data-fancybox="gallery"]', {
+            hideScrollbar: false,
+        });
     </script>
 {/block}
 <style>
@@ -131,6 +137,26 @@
 
     .trumbowyg-button-pane {
         background-color: white;
+    }
+
+    .gallery-item{
+        float: left;
+        height: 150px;
+        width: 220px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        display: flex;
+
+    }
+    .gallery-item > a > img{
+        display: block;
+        height: 150px;
+        width: 220px;
+    }
+
+    .gallery-item-img:hover {
+        transition: all 0.2s ease-out 0s;
+        box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
     }
 </style>
 </body>

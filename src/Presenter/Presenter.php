@@ -19,6 +19,12 @@ use function is_string;
  */
 abstract class Presenter extends NettePresenter
 {
+    /** @var string Name of presenter. Override this in child classes. */
+    public const PRESENTER_NAME = '';
+
+    /** @var string Default render action. */
+    public const ACTION_DEFAULT = 'default';
+
     /** @inheritDoc */
     public function flashMessage($message, FlashType|string $type = FlashType::INFO): stdClass
     {
