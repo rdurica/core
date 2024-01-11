@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Rdurica\Core\Model\Manager;
 
@@ -13,9 +11,9 @@ use Traversable;
 /**
  * Manager.
  *
- * @package   Rdurica\Core\Model
- * @author    Robert Durica <r.durica@gmail.com>
- * @copyright Copyright (c) 2023, Robert Durica
+ * @package   Rdurica\Core\Model\Manager
+ * @copyright Copyright (c) 2024, Robert Durica
+ * @since     2023-08-08
  */
 abstract class Manager
 {

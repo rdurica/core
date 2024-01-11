@@ -1,5 +1,6 @@
 services:
     security.passwords: Nette\Security\Passwords(::PASSWORD_BCRYPT, [cost: 12])
+
     # Managers
     core.aclManager: Rdurica\Core\Model\Manager\AclManager
     core.userManager: Rdurica\Core\Model\Manager\UserManager

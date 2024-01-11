@@ -1,19 +1,19 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Rdurica\Core\Model\Service;
 
 use Nette\Security\Authorizator;
-use Rdurica\Core\Constant\Privileges;
 use Rdurica\Core\Constant\Role;
+use Rdurica\Core\Enum\Privileges;
+
+use function array_key_exists;
 
 /**
- * AuthorizationService (ACL)
+ * AuthorizationService.
  *
  * @package   Rdurica\Core\Model\Service
- * @author    Robert Durica <r.durica@gmail.com>
- * @copyright Copyright (c) 2023, Robert Durica
+ * @copyright Copyright (c) 2024, Robert Durica
+ * @since     2024-08-13
  */
 final class AuthorizationService implements Authorizator
 {
@@ -29,7 +29,6 @@ final class AuthorizationService implements Authorizator
     /** @inheritDoc */
     public function isAllowed($role, $resource, $privilege): bool
     {
-
         if ($role === Role::GLOBAL_ADMIN) {
             return true;
         }
@@ -43,7 +42,7 @@ final class AuthorizationService implements Authorizator
 
         // User have exact privilege or can do all
         $hasPrivilege = array_key_exists($privilege, $resources[$resource]);
-        $hasAllPrivileges = array_key_exists(Privileges::ALL, $resources[$resource]);
+        $hasAllPrivileges = array_key_exists(Privileges::ALL->value, $resources[$resource]);
         if ($hasPrivilege || $hasAllPrivileges) {
             return true;
         }

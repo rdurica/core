@@ -1,17 +1,15 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Rdurica\Core\Extension;
 
 use Nette\DI\CompilerExtension;
 
 /**
- * CoreExtension
+ * CoreExtension.
  *
  * @package   Rdurica\Core\Extension
- * @author    Robert Durica <r.durica@gmail.com>
- * @copyright Copyright (c) 2023, Robert Durica
+ * @copyright Copyright (c) 2024, Robert Durica
+ * @since     2024-08-08
  * @codeCoverageIgnore
  */
 final class CoreExtension extends CompilerExtension

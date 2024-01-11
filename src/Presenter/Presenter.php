@@ -1,22 +1,32 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Rdurica\Core\Presenter;
 
 use Nette\Application\AbortException;
 use Nette\Application\UI\Presenter as NettePresenter;
+use Rdurica\Core\Enum\FlashType;
+use stdClass;
+
+use function is_string;
 
 /**
  * Presenter.
  *
  * @package   Rdurica\Core\Presenter
- * @author    Robert Durica <r.durica@gmail.com>
- * @copyright Copyright (c) 2023, Robert Durica
+ * @copyright Copyright (c) 2024, Robert Durica
+ * @since     2023-08-08
  * @codeCoverageIgnore
  */
 abstract class Presenter extends NettePresenter
 {
+    /** @inheritDoc */
+    public function flashMessage($message, FlashType|string $type = FlashType::INFO): stdClass
+    {
+        $flashType = is_string($type) ? $type : $type->value;
+
+        return parent::flashMessage($message, $flashType);
+    }
+
     /**
      * Log-out user and clear identity.
      *
@@ -37,6 +47,7 @@ abstract class Presenter extends NettePresenter
      * Get request parameter value as string.
      *
      * @param string $name
+     *
      * @return string|null
      */
     final public function getStringParameter(string $name): ?string
@@ -48,6 +59,7 @@ abstract class Presenter extends NettePresenter
      * Get request parameter value as integer.
      *
      * @param string $name
+     *
      * @return int|null
      */
     final public function getIntParameter(string $name): ?int
@@ -59,6 +71,7 @@ abstract class Presenter extends NettePresenter
      * Get request parameter value as boolean.
      *
      * @param string $name
+     *
      * @return bool|null
      */
     final public function getBooleanParameter(string $name): ?bool
@@ -71,6 +84,7 @@ abstract class Presenter extends NettePresenter
      *
      * @param string $parameter
      * @param int    $filter
+     *
      * @return int|string|bool|null
      */
     private function getParameterValue(string $parameter, int $filter): null|int|string|bool

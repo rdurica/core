@@ -1,13 +1,18 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Rdurica\Core\Model\Manager;
 
+/**
+ * AclManager.
+ *
+ * @package   Rdurica\Core\Model\Manager
+ * @copyright Copyright (c) 2024, Robert Durica
+ * @since     2023-08-13
+ */
 final class AclManager extends Manager
 {
     /** @var string Table name. */
-    public const TABLE = 'core_acl';
+    private const TABLE = 'core_acl';
 
     /** @inheritDoc */
     protected function getTableName(): string
@@ -19,6 +24,7 @@ final class AclManager extends Manager
      * Find Resources & privileges for role
      *
      * @param array $roles
+     *
      * @return array<int, string|int>
      */
     public function findByRoles(array $roles): array

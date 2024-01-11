@@ -1,17 +1,15 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Rdurica\Core\Exception\Authentication;
 
 use Rdurica\Core\Exception\CoreException;
 
 /**
- * General authentication exception.
+ * AuthenticationException.
  *
- * @package   src\Exception\Authentication
- * @author    Robert Durica <r.durica@gmail.com>
- * @copyright Copyright (c) 2023, Robert Durica
+ * @package   Rdurica\Core\Exception\Authentication
+ * @copyright Copyright (c) 2024, Robert Durica
+ * @since     2023-08-19
  */
 class AuthenticationException extends CoreException
 {

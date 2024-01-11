@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Rdurica\Core\Model\Entity;
 
@@ -10,18 +8,18 @@ use Nette\Security\IIdentity;
  * CoreIdentity.
  *
  * @package   Rdurica\Core\Model\Entity
- * @author    Robert Durica <r.durica@gmail.com>
- * @copyright Copyright (c) 2023, Robert Durica
+ * @copyright Copyright (c) 2024, Robert Durica
+ * @since     2023-08-13
  */
 final readonly class CoreIdentity implements IIdentity
 {
     /**
      * Constructor.
      *
-     * @param int                               $id        User id.
-     * @param string                            $username  Username.
-     * @param string                            $email     Email.
-     * @param array<string, int>                $roles     User roles.
+     * @param int                $id       User id.
+     * @param string             $username Username.
+     * @param string             $email    Email.
+     * @param array<string, int> $roles    User roles.
      */
     public function __construct(
         private int $id,

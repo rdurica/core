@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Rdurica\Core\Component;
 
@@ -12,9 +10,9 @@ use function get_class;
 /**
  * ComponentRenderer.
  *
- * @package   App\Component
- * @author    Robert Durica <r.durica@gmail.com>
- * @copyright Copyright (c) 2023, Robert Durica
+ * @package   Rdurica\Core\Component
+ * @copyright Copyright (c) 2024, Robert Durica
+ * @since     2023-08-08
  * @method getTemplate()
  * @codeCoverageIgnore
  */

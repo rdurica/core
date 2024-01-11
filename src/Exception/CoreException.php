@@ -1,17 +1,15 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Rdurica\Core\Exception;
 
 use Exception;
 
 /**
- * CoreException - default package exception.
+ * Default package exception.
  *
  * @package   Rdurica\Core\Exception
- * @author    Robert Durica <r.durica@gmail.com>
- * @copyright Copyright (c) 2023, Robert Durica
+ * @copyright Copyright (c) 2024, Robert Durica
+ * @since     2023-08-09
  */
 class CoreException extends Exception
 {

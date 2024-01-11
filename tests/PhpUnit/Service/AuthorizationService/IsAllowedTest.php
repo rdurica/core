@@ -1,13 +1,11 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace PhpUnit\Service\AuthorizationService;
 
 use Mockery;
 use PHPUnit\Framework\TestCase;
-use Rdurica\Core\Constant\Privileges;
 use Rdurica\Core\Constant\Role;
+use Rdurica\Core\Enum\Privileges;
 use Rdurica\Core\Model\Service\AuthenticationService;
 
 /**

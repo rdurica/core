@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Rdurica\Core\Model\Service;
 
@@ -18,9 +16,9 @@ use Rdurica\Core\Model\Manager\UserRoleManager;
 /**
  * AuthenticationService for user management and authentication.
  *
- * @package   Rdurica\Core\Service
- * @author    Robert Durica <r.durica@gmail.com>
- * @copyright Copyright (c) 2023, Robert Durica
+ * @package   Rdurica\Core\Model\Service
+ * @copyright Copyright (c) 2024, Robert Durica
+ * @since     2024-08-13
  */
 final class AuthenticationService implements Authenticator
 {
@@ -53,6 +51,7 @@ final class AuthenticationService implements Authenticator
      *
      * @param string $user
      * @param string $password
+     *
      * @return CoreIdentity
      * @throws InvalidPasswordException
      * @throws UserIsDisabledException
@@ -100,6 +99,7 @@ final class AuthenticationService implements Authenticator
      * Save resources & privileges to cache.
      *
      * @param array $resources
+     *
      * @return void
      */
     private function saveUserResourcesAndPrivilegesToSession(array $resources): void

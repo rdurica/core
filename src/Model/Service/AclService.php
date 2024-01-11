@@ -1,17 +1,18 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Rdurica\Core\Model\Service;
 
 use Rdurica\Core\Model\Manager\AclManager;
 
+use function array_key_exists;
+use function count;
+
 /**
- * AclService
+ * AclService.
  *
  * @package   Rdurica\Core\Model\Service
- * @author    Robert Durica <r.durica@gmail.com>
- * @copyright Copyright (c) 2023, Robert Durica
+ * @copyright Copyright (c) 2024, Robert Durica
+ * @since     2024-08-13
  */
 final class AclService
 {
@@ -28,6 +29,7 @@ final class AclService
      * Finds Resources & Privileges for roles.
      *
      * @param int[] $roles
+     *
      * @return array<string, array<string, int>> Returns [resource => [privilage => id]]
      */
     public function findResourcesAndPrivilegesByRoles(array $roles): array

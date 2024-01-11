@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Rdurica\Core\Exception\Authentication;
 
@@ -8,14 +6,11 @@ namespace Rdurica\Core\Exception\Authentication;
  * Occur when user was not found.
  *
  * @package   Rdurica\Core\Exception\Authentication
- * @author    Robert Durica <r.durica@gmail.com>
- * @copyright Copyright (c) 2023, Robert Durica
+ * @copyright Copyright (c) 2024, Robert Durica
+ * @since     2024-01-12
  */
 final class UserNotFoundException extends AuthenticationException
 {
-    /** @var string Username which triggers exception. */
-    public string $username;
-
     /**
      * Constructor.
      *
@@ -24,8 +19,7 @@ final class UserNotFoundException extends AuthenticationException
     public function __construct(string $username)
     {
         $message = sprintf('User %s not found', $username);
-        parent::__construct($message);
 
-        $this->username = $username;
+        parent::__construct($message);
     }
 }
