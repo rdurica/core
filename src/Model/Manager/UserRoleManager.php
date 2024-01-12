@@ -30,8 +30,8 @@ final class UserRoleManager extends Manager
     public function findByUserId(int $userId): array
     {
         return $this->find()
-            ->select('role.role, role_id')
+            ->select('role_code')
             ->where(['user_id' => $userId])
-            ->fetchPairs('role', 'role_id');
+            ->fetchPairs('role_code', 'role_code');
     }
 }

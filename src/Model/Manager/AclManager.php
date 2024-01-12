@@ -30,8 +30,8 @@ final class AclManager extends Manager
     public function findByRoles(array $roles): array
     {
         return $this->find()
-            ->select('resource.resource, privilege.privilege, privilege_id')
-            ->where('role_id', $roles)
+            ->select('resource_code, privilege_code')
+            ->where('role_code', $roles)
             ->fetchAll();
     }
 }
