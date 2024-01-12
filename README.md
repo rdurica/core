@@ -14,8 +14,7 @@ components for a versatile base model, dynamic layouts, easy-to-use ACL (Access 
 authentication mechanism. It's aimed at boosting productivity and empowering developers to build feature-rich
 applications with greater ease and efficiency.
 
-![image](https://github.com/rdurica/core/assets/16089770/1a959411-b8aa-4f5a-b76e-bdbd8301d383)
-
+![image](https://github.com/rdurica/core/assets/16089770/b06a0cc6-3534-4bc9-bc7c-29df9b3b23c0)
 ## Installation
 
 To install latest version use [Composer](https://getcomposer.org).
