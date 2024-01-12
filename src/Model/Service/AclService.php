@@ -30,7 +30,7 @@ final class AclService
      *
      * @param int[] $roles
      *
-     * @return array<string, array<string, int>> Returns [resource => [privilage => id]]
+     * @return array<string, array<string, int>> Returns [resource => [privilege_code => id]]
      */
     public function findResourcesAndPrivilegesByRoles(array $roles): array
     {
@@ -41,11 +41,11 @@ final class AclService
 
         $aclData = $this->aclManager->findByRoles($roles);
         foreach ($aclData as $row) {
-            if (!array_key_exists($row->resource, $result)) {
-                $result[$row['resource']] = [];
+            if (!array_key_exists($row->resource_code, $result)) {
+                $result[$row['resource_code']] = [];
             }
 
-            $result[$row['resource']] += [$row['privilege'] => $row['privilege_id']];
+            $result[$row['resource_code']] += [$row['privilege_code'] => $row['privilege_code']];
         }
 
         return $result;

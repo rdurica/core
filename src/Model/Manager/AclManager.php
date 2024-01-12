@@ -23,7 +23,7 @@ final class AclManager extends Manager
     /**
      * Find Resources & privileges for role
      *
-     * @param array $roles
+     * @param array<int, string> $roles
      *
      * @return array<int, string|int>
      */
@@ -31,7 +31,7 @@ final class AclManager extends Manager
     {
         return $this->find()
             ->select('resource_code, privilege_code')
-            ->where('role_code', $roles)
+            ->where('role_code', array_values($roles))
             ->fetchAll();
     }
 }

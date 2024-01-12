@@ -2,6 +2,8 @@
 
 namespace Rdurica\Core\Model\Manager;
 
+use Nette\Database\Table\ActiveRow;
+
 /**
  * UserRoleManager.
  *
@@ -25,13 +27,12 @@ final class UserRoleManager extends Manager
      *
      * @param int $userId
      *
-     * @return array<string|int> All user roles & ids [role => role_id]
+     * @return array All user roles & ids [role => role_id]
      */
     public function findByUserId(int $userId): array
     {
         return $this->find()
-            ->select('role_code')
             ->where(['user_id' => $userId])
-            ->fetchPairs('role_code', 'role_code');
+            ->fetchPairs('user_id', 'role_code');
     }
 }

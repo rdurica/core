@@ -40,13 +40,12 @@ final class AuthorizationService implements Authorizator
             return false;
         }
 
+        $privilege = is_string($privilege) ? $privilege : $privilege->value;
+
         // User have exact privilege or can do all
         $hasPrivilege = array_key_exists($privilege, $resources[$resource]);
         $hasAllPrivileges = array_key_exists(Privileges::ALL->value, $resources[$resource]);
-        if ($hasPrivilege || $hasAllPrivileges) {
-            return true;
-        }
 
-        return false;
+        return ($hasPrivilege || $hasAllPrivileges);
     }
 }
