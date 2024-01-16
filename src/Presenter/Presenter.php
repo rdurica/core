@@ -3,10 +3,12 @@
 namespace Rdurica\Core\Presenter;
 
 use Nette\Application\AbortException;
+use Nette\Application\Helpers;
 use Nette\Application\UI\Presenter as NettePresenter;
 use Rdurica\Core\Enum\FlashType;
 use stdClass;
 
+use function dirname;
 use function is_string;
 
 /**
@@ -24,6 +26,19 @@ abstract class Presenter extends NettePresenter
 
     /** @var string Default render action. */
     public const ACTION_DEFAULT = 'default';
+
+    /** @inheritDoc */
+    public function formatTemplateFiles(): array
+    {
+        [, $presenter] = Helpers::splitName($this->getName());
+        $dir = dirname(static::getReflection()->getFileName());
+        $dir = is_dir("$dir/Templates") ? $dir : dirname($dir);
+
+        return [
+            "$dir/Templates/$presenter/$this->view.latte",
+            "$dir/Templates/$presenter.$this->view.latte",
+        ];
+    }
 
     /** @inheritDoc */
     public function flashMessage($message, FlashType|string $type = FlashType::INFO): stdClass
@@ -104,4 +119,6 @@ abstract class Presenter extends NettePresenter
 
         return $result ?: null;
     }
+
+
 }
