@@ -9,12 +9,9 @@
 
 
 The Core package is a comprehensive utility toolkit designed to enhance your application development process by
-providing a range of essential functionalities. With its focus on seamless integration, it includes foundational
-components for a versatile base model, dynamic layouts, easy-to-use ACL (Access Control List), and a hassle-free
-authentication mechanism. It's aimed at boosting productivity and empowering developers to build feature-rich
+providing a range of essential functionalities. With its focus on seamless integration. It's aimed at boosting productivity and empowering developers to build feature-rich
 applications with greater ease and efficiency.
 
-![image](https://github.com/rdurica/core/assets/16089770/b06a0cc6-3534-4bc9-bc7c-29df9b3b23c0)
 ## Installation
 
 To install latest version use [Composer](https://getcomposer.org).
@@ -32,7 +29,7 @@ extensions:
 
 ## Key Features
 
-#### Base Model and Utility Traits ####
+#### Base Repository and Utility Traits ####
 
 The package comes equipped with a robust base model that streamlines database interactions and enforces standardized
 conventions. Additionally, a collection of utility traits enhances various aspects of your application's functionality,
@@ -49,11 +46,6 @@ design requirements.
 Elevate the user experience with SweetAlert integration, allowing you to create attractive and user-friendly flash
 messages. This enhances the presentation of notifications and messages, ensuring a polished and engaging UI for your
 users.
-
-#### Access Control List (ACL) for Easy Authorization ####
-
-The Core package includes a flexible ACL system that simplifies authorization management. It provides a structured way
-to define user roles, permissions, and access levels, ensuring that sensitive actions and resources are protected.
 
 ## Contributing
 
