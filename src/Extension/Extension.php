@@ -12,7 +12,7 @@ use Nette\DI\CompilerExtension;
  * @since     2024-08-08
  * @codeCoverageIgnore
  */
-final class CoreExtension extends CompilerExtension
+final class Extension extends CompilerExtension
 {
     /** @inheritDoc */
     public function loadConfiguration(): void

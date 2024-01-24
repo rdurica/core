@@ -24,7 +24,7 @@ Register extension
 
 ```neon
 extensions:
-	rdurica.core: Rdurica\Core\Extension\CoreExtension
+	rdurica.core: Rdurica\Core\Extension\Extension
 ```
 
 ## Key Features
