@@ -11,18 +11,18 @@ namespace Rdurica\Core\Enum;
  */
 enum FlashType: string
 {
-    /** @var string Red with (x). */
+    /** Red with (x). */
     case ERROR = 'error';
 
-    /** @var string Orange with (!) . */
+    /** Orange with (!) . */
     case WARNING = 'warning';
 
-    /** @var string Green with (✓). */
+    /** Green with (✓). */
     case SUCCESS = 'success';
 
-    /** @var string Blue with (i). */
+    /** Blue with (i). */
     case INFO = 'info';
 
-    /** @var string Grey with (?). */
+    /** Grey with (?). */
     case QUESTION = 'question';
 }

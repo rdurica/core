@@ -9,11 +9,11 @@ namespace Rdurica\Core\Presenter;
  * @method getUser()
  * @method redirect(string $string)
  *
+ * @codeCoverageIgnore
  * @property array $onStartup
  * @package   Rdurica\Core\Presenter
- * @author    Robert Durica <r.durica@gmail.com>
- * @copyright Copyright (c) 2023, Robert Durica
- * @codeCoverageIgnore
+ * @copyright Copyright (c) 2024, Robert Durica
+ * @since     2024-01-25
  */
 trait RequireAnonymousUser
 {

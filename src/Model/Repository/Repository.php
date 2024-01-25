@@ -45,7 +45,7 @@ abstract class Repository
     {
         $selection = $this->explorer->table($this->getTable());
 
-        if ($columns === null) {
+        if (!$columns) {
             return $selection;
         }
 
@@ -55,12 +55,12 @@ abstract class Repository
     /**
      * Insert data into database.
      *
-     * @param array|Traversable|Selection $data [$column => $value]|\Traversable|Selection for INSERT ... SELECT
+     * @param array<mixed>|Traversable<mixed>|Selection $data
      *
-     * @return ActiveRow|int|bool Returns ActiveRow or number of affected rows for Selection or table without primary key
+     * @return ActiveRow|int|bool|array<mixed>
      * @throws UniqueConstraintViolationException
      */
-    final public function insert(iterable $data): ActiveRow|bool|int
+    final public function insert(iterable $data): ActiveRow|bool|int|array
     {
         return $this->select()->insert($data);
     }
@@ -80,7 +80,7 @@ abstract class Repository
     /**
      * Convert columns to select string.
      *
-     * @param array $columns
+     * @param array<int|string, string|null> $columns
      *
      * @return string
      */

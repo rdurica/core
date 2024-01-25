@@ -9,6 +9,8 @@ use Rdurica\Core\Enum\FlashType;
 use stdClass;
 
 use function dirname;
+use function is_bool;
+use function is_int;
 use function is_string;
 
 /**
@@ -27,16 +29,20 @@ abstract class Presenter extends NettePresenter
     /** @var string Default render action. */
     public const ACTION_DEFAULT = 'default';
 
-    /** @inheritDoc */
+    /**
+     * Formats view template file names.
+     *
+     * @return string[]
+     */
     public function formatTemplateFiles(): array
     {
-        [, $presenter] = Helpers::splitName($this->getName());
-        $dir = dirname(static::getReflection()->getFileName());
-        $dir = is_dir("$dir/Templates") ? $dir : dirname($dir);
+        [, $presenter] = Helpers::splitName((string)$this->getName());
+        $dir = dirname((string)static::getReflection()->getFileName());
+        $dir = (string)is_dir($dir . '/Templates') ? $dir : dirname($dir);
 
         return [
-            "$dir/Templates/$presenter/$this->view.latte",
-            "$dir/Templates/$presenter.$this->view.latte",
+            sprintf('%s/Templates/%s/%s.latte', $dir, $presenter, $this->view),
+            sprintf('%s/Templates/%s.%s.latte', $dir, $presenter, $this->view),
         ];
     }
 
@@ -85,7 +91,9 @@ abstract class Presenter extends NettePresenter
      */
     final public function getIntParameter(string $name): ?int
     {
-        return $this->getParameterValue($name, FILTER_VALIDATE_INT);
+        $value = $this->getParameterValue($name, FILTER_VALIDATE_INT);
+
+        return is_int($value) ? $value : null;
     }
 
     /**
@@ -97,7 +105,9 @@ abstract class Presenter extends NettePresenter
      */
     final public function getBooleanParameter(string $name): ?bool
     {
-        return $this->getParameterValue($name, FILTER_VALIDATE_BOOLEAN);
+        $value = $this->getParameterValue($name, FILTER_VALIDATE_BOOLEAN);
+
+        return is_bool($value) ? $value : null;
     }
 
     /**
@@ -119,6 +129,4 @@ abstract class Presenter extends NettePresenter
 
         return $result ?: null;
     }
-
-
 }
