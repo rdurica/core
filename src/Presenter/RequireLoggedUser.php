@@ -27,7 +27,7 @@ trait RequireLoggedUser
     {
         $this->onStartup[] = function () {
             if (!$this->getUser()->isLoggedIn()) {
-                $this->redirect('Sign:in');
+                $this->redirect(':Auth:Sign:in');
             }
         };
     }

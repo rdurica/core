@@ -67,7 +67,7 @@ abstract class Presenter extends NettePresenter
         }
 
         $this->getUser()->logout(true);
-        $this->getPresenter()->redirect('Sign:in');
+        $this->getPresenter()->redirect(':Auth:Sign:in');
     }
 
     /**

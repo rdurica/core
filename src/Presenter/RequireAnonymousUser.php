@@ -26,7 +26,7 @@ trait RequireAnonymousUser
     {
         $this->onStartup[] = function () {
             if ($this->getUser()->isLoggedIn()) {
-                $this->redirect('Home:');
+                $this->redirect(':Main:Home:');
             }
         };
     }
