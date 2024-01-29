@@ -88,12 +88,4 @@ abstract class Repository
     {
         return implode(', ', $columns);
     }
-
-    /**
-     * @return ActiveRow[]
-     */
-    public function findAll(): array
-    {
-        return $this->select()->fetchAll();
-    }
 }
