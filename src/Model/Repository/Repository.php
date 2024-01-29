@@ -23,7 +23,7 @@ abstract class Repository
      * @param Explorer    $explorer
      * @param Transaction $transaction
      */
-    final public function __construct(private Explorer $explorer, protected Transaction $transaction)
+    public function __construct(private Explorer $explorer, protected Transaction $transaction)
     {
     }
 
@@ -87,5 +87,13 @@ abstract class Repository
     private static function selectColumns(array $columns): string
     {
         return implode(', ', $columns);
+    }
+
+    /**
+     * @return ActiveRow[]
+     */
+    public function findAll(): array
+    {
+        return $this->select()->fetchAll();
     }
 }
