@@ -36,6 +36,12 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
+    - name: PhpStan
+      run: composer run phpstan
+
+    - name: PhpSniffer
+      run: composer run phpcs
+
     - name: PHPUnit Tests
       uses: php-actions/phpunit@v3
       env:
