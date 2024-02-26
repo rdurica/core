@@ -1,0 +1,17 @@
+{**
+ * @param Filter                         $filter
+ * @param Nette\Forms\Controls\SelectBox $input
+ *}
+
+{if $outer}
+    <div class="d-flex flex-row mb-6">
+        <div class="p-1" style="width: 500px;">
+            {label $input, class: 'form-label' /}
+			{input $input, class: 'form-control px-2'}
+        </div>
+    </div>
+{else}
+    <div class="form-outline mb-4">
+        {input $input, class: 'form-control'}
+    </div>
+{/if}
