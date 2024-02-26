@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Rdurica\Core\Component\Component;
+namespace Rdurica\Core\Component;
 
 use Ublaboo\DataGrid\DataGrid as UblabooDataGrid;
 
@@ -13,4 +13,8 @@ use Ublaboo\DataGrid\DataGrid as UblabooDataGrid;
  */
 final class DataGrid extends UblabooDataGrid
 {
+    public function getOriginalTemplateFile(): string
+    {
+        return __DIR__ . '/../Templates/Datagrid/datagrid.latte';
+    }
 }
