@@ -2,6 +2,7 @@
 
 namespace Rdurica\Core\Presenter;
 
+use JetBrains\PhpStorm\Deprecated;
 use Nette\Application\AbortException;
 use Nette\Application\Helpers;
 use Nette\Application\UI\Presenter as NettePresenter;
@@ -23,12 +24,6 @@ use function is_string;
  */
 abstract class Presenter extends NettePresenter
 {
-    /** @var string Name of presenter. Override this in child classes. */
-    public const PRESENTER_NAME = '';
-
-    /** @var string Default render action. */
-    public const ACTION_DEFAULT = 'default';
-
     /**
      * Formats view template file names.
      *
@@ -47,11 +42,25 @@ abstract class Presenter extends NettePresenter
     }
 
     /** @inheritDoc */
+    #[Deprecated(replacement: '$this->addFlashMessage()')]
     public function flashMessage($message, FlashType|string $type = FlashType::INFO): stdClass
     {
         $flashType = is_string($type) ? $type : $type->value;
 
         return parent::flashMessage($message, $flashType);
+    }
+
+    /**
+     * Add flash message to session.
+     *
+     * @param           $message
+     * @param FlashType $type
+     *
+     * @return stdClass
+     */
+    public function addFlashMessage($message, FlashType $type = FlashType::INFO): stdClass
+    {
+        return parent::flashMessage($message, $type->value);
     }
 
     /**
